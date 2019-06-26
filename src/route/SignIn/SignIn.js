@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button } from 'antd';
 // import bgSignIn from '../../assets/images/sign-in-bg.jpg'
 import './SignIn.css';
 
 class SignIn extends Component {
 
   handleSubmit = e => {
+    const { signIn } = this.props;
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        signIn(values);
       }
     });
   };
 
   render() {
+
+    console.log(this.props);
 
     const { getFieldDecorator } = this.props.form;
 
@@ -22,7 +26,7 @@ class SignIn extends Component {
       <div className="login-form">
         <Form onSubmit={this.handleSubmit}>
           <Form.Item>
-            {getFieldDecorator('username', {
+            {getFieldDecorator('email', {
               rules: [{ type: "email", required: true, message: 'The input is not valid E-mail!' }],
             })(
               <Input
@@ -43,11 +47,11 @@ class SignIn extends Component {
             )}
           </Form.Item>
           <Form.Item>
-            {getFieldDecorator('remember', {
+            {/* {getFieldDecorator('remember', {
               valuePropName: 'checked',
               initialValue: true,
             })(<Checkbox>Remember me</Checkbox>)}
-            <br />
+            <br /> */}
             <Button type="primary" htmlType="submit" className="login-form-button">
               Log in
             </Button>
