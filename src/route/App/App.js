@@ -3,7 +3,6 @@ import { Redirect, Switch, Route, Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import routers from '../index';
 import { SIGN_IN } from '../../constants/urls';
-// import SignIn from '../SignIn';
 
 import 'antd/dist/antd.css';
 
