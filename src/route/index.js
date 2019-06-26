@@ -1,6 +1,6 @@
 import * as urls from '../constants/urls';
 import SignIn from './SignIn';
-// import NotFoundPage from '../components/notFoundPage';
+import NotFoundPage from '../components/NotFoundPage';
 
 const routers = [
 	{
@@ -8,9 +8,9 @@ const routers = [
 		path: urls.SIGN_IN,
 		component: SignIn,
 	},
-	// {
-	// 	component: NotFoundPage,
-	// },
+	{
+		component: NotFoundPage,
+	},
 ];
 
 export default routers;

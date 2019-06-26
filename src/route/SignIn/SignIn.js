@@ -23,7 +23,7 @@ class SignIn extends Component {
         <Form onSubmit={this.handleSubmit}>
           <Form.Item>
             {getFieldDecorator('username', {
-              rules: [{ required: true, message: 'Please input your username!' }],
+              rules: [{ type: "email", required: true, message: 'The input is not valid E-mail!' }],
             })(
               <Input
                 prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
