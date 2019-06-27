@@ -23,7 +23,7 @@ export const signIn = payload => dispatch => {
       const { data } = response;
       // console.log('from action', data);
 			if (data) {
-				localStorage.setItem('token', JSON.stringify(data));
+				localStorage.setItem('token', JSON.stringify(data.authentication_tokens[0].token));
 
 				return dispatch(signInRequestSuccess(response));
 			}

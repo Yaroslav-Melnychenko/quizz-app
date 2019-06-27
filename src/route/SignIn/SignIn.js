@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Icon, Input, Button } from 'antd';
+import { Redirect } from 'react-router-dom';
 // import bgSignIn from '../../assets/images/sign-in-bg.jpg'
 import './SignIn.css';
 
@@ -18,7 +19,9 @@ class SignIn extends Component {
 
   render() {
 
-    console.log(this.props);
+    if (JSON.parse(localStorage.getItem('token'))) {
+			return <Redirect to={'/'} />;
+		}
 
     const { getFieldDecorator } = this.props.form;
 

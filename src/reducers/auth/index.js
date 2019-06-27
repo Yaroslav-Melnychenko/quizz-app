@@ -7,10 +7,10 @@ export default (state = initialState.auth, { type, payload }) => {
 		}
 		case 'SIGN_IN_REQUEST_SUCCESS': {
 			const {
-				data: { token },
+				data,
       } = payload;
-      console.log('payload', payload);
-			return { ...state, isFetching: false, token };
+    //   console.log('payload', payload);
+			return { ...state, isFetching: false, token: data.authentication_tokens[0].token };
 		}
 
 		case 'SIGN_IN_REQUEST_ERROR': {
