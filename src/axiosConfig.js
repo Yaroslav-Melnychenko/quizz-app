@@ -12,7 +12,7 @@ AxiosInstance.interceptors.request.use(
 		if (JSON.parse(localStorage.getItem('token'))) {
 			return {
 				...config,
-				headers: { ...config.headers, 'x-token': JSON.parse(localStorage.getItem('token')).token },
+				headers: { ...config.headers, 'Authorization': JSON.parse(localStorage.getItem('token')) },
 			};
 		}
 

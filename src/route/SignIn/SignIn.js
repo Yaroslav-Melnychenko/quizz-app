@@ -20,7 +20,7 @@ class SignIn extends Component {
   render() {
 
     if (JSON.parse(localStorage.getItem('token'))) {
-			return <Redirect to={'/'} />;
+			return <Redirect to={'/dashboard'} />;
 		}
 
     const { getFieldDecorator } = this.props.form;
