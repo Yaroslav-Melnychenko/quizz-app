@@ -13,6 +13,7 @@ const routers = [
 		path: urls.DASHBOARD,
 		component: Dashboard,
 		privateRoute: true,
+		withHeader: true,
 	},
 	{
 		component: NotFoundPage,

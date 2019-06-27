@@ -4,6 +4,7 @@ import { createBrowserHistory } from 'history';
 import routers from '../index';
 import { SIGN_IN } from '../../constants/urls';
 import NotFoundPage from '../../components/NotFoundPage';
+import Header from '../../components/Header';
 
 import 'antd/dist/antd.css';
 
@@ -13,8 +14,9 @@ class App extends Component {
 	
   render() {
 
-    const block = (RenderComponent, props) => (
+    const block = (header, RenderComponent, props) => (
 		<Fragment>
+			{header && <Header />}
 			<div className="wrapper">
 				<RenderComponent {...props} />
 			</div>
@@ -31,7 +33,7 @@ class App extends Component {
 					exact={el.exact}
 					render={props => {
 						if (!el.component) {
-							return block(<NotFoundPage />, props);
+							return block(el.withHeader, <NotFoundPage />, props);
 						}
 
 						if (el.privateRoute) {
@@ -40,9 +42,9 @@ class App extends Component {
 								return <Redirect to={SIGN_IN} />;
 							}
 
-							return block(el.component, props);
+							return block(el.withHeader, el.component, props);
 						}
-						return block(el.component, props);
+						return block(el.withHeader, el.component, props);
 					}}
 				/>
 			))}

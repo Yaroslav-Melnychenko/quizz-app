@@ -1,0 +1,14 @@
+header {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 8px #f0f1f2;
+  padding: 25px 15px;
+  text-align: right;
+  z-index: 2;
+}
+
+header .logout {
+  text-decoration: underline;
+  cursor: pointer;
+}
