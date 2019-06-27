@@ -1,0 +1,7 @@
+.dash-container {
+  display: flex;
+}
+
+.main-content {
+  padding: 35px;
+}
