@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Icon, Input, Button } from 'antd';
+import { Form, Icon, Input, Button, Spin } from 'antd';
 import { Redirect } from 'react-router-dom';
 // import bgSignIn from '../../assets/images/sign-in-bg.jpg'
 import './SignIn.css';
@@ -23,7 +23,7 @@ class SignIn extends Component {
 			return <Redirect to={'/dashboard'} />;
 		}
 
-    const { getFieldDecorator } = this.props.form;
+    const { form: { getFieldDecorator }, isFetching } = this.props;
 
     return (
       <div className="login-form">
@@ -55,8 +55,8 @@ class SignIn extends Component {
               initialValue: true,
             })(<Checkbox>Remember me</Checkbox>)}
             <br /> */}
-            <Button type="primary" htmlType="submit" className="login-form-button">
-              Log in
+            <Button type="primary" htmlType="submit" className="login-form-button" disabled={isFetching}>
+              Log in { isFetching ? <Spin indicator={ <Icon type="loading" style={{ fontSize: 16, marginLeft: '10px' }} spin /> } /> : null }
             </Button>
           </Form.Item>
         </Form>
