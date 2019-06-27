@@ -9,7 +9,6 @@ export default (state = initialState.auth, { type, payload }) => {
 			const {
 				data,
       } = payload;
-    //   console.log('payload', payload);
 			return { ...state, isFetching: false, token: data.authentication_tokens[0].token };
 		}
 

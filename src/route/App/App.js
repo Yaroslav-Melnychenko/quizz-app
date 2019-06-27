@@ -21,9 +21,6 @@ class App extends Component {
 		</Fragment>
 	);
 
-	const token = localStorage.getItem('token');
-	console.log('token', token);
-
     return (
       <Router history={history}>
         <Switch>

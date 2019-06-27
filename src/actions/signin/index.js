@@ -21,7 +21,6 @@ export const signIn = payload => dispatch => {
 	return axios({ method: 'POST', url: SIGN_IN_URL, data: payload })
 		.then(response => {
       const { data } = response;
-      // console.log('from action', data);
 			if (data) {
 				localStorage.setItem('token', JSON.stringify(data.authentication_tokens[0].token));
 
