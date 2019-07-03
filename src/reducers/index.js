@@ -1,7 +1,7 @@
 import auth from './auth';
-import isTeacher from './isTeacher';
+import global from './global'
 
 export default {
+  global,
   auth,
-  isTeacher
 };

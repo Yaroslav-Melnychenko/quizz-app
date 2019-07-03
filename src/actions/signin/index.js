@@ -1,4 +1,5 @@
 import axios from '../../axiosConfig';
+import { setErrors } from '../global';
 import { SIGN_IN_URL } from '../../constants/apiUrls';
 
 const signInRequest = payload => ({
@@ -38,6 +39,6 @@ export const signIn = payload => dispatch => {
 		})
 		.catch(err => {
 			dispatch(signInRequestError());
-			// dispatch(setErrors(err.response));
+			dispatch(setErrors(err.response));
 		});
 };

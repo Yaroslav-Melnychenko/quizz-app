@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Form, Icon, Input, Button, Spin } from 'antd';
+import { Form, Icon, Input, Button, Spin, message } from 'antd';
+import { isEqual, isString } from 'lodash';
 import { Redirect } from 'react-router-dom';
-// import bgSignIn from '../../assets/images/sign-in-bg.jpg'
 import './SignIn.css';
 
 class SignIn extends Component {
@@ -11,11 +11,18 @@ class SignIn extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        // console.log('Received values of form: ', values);
         signIn(values);
       }
     });
   };
+
+  componentDidUpdate(prevProps) {
+		const { error } = this.props;
+		if (!isEqual(prevProps.error, error) && isString(error)) {
+			message.error('This is an error message');
+		}
+	}
 
   render() {
 
@@ -27,6 +34,7 @@ class SignIn extends Component {
 
     return (
       <div className="login-form">
+        {/* { !error ? message.error(error) : null } */}
         <Form onSubmit={this.handleSubmit}>
           <Form.Item>
             {getFieldDecorator('email', {
@@ -50,11 +58,6 @@ class SignIn extends Component {
             )}
           </Form.Item>
           <Form.Item>
-            {/* {getFieldDecorator('remember', {
-              valuePropName: 'checked',
-              initialValue: true,
-            })(<Checkbox>Remember me</Checkbox>)}
-            <br /> */}
             <Button type="primary" htmlType="submit" className="login-form-button" disabled={isFetching}>
               Log in { isFetching ? <Spin indicator={ <Icon type="loading" style={{ fontSize: 16, marginLeft: '10px' }} spin /> } /> : null }
             </Button>
